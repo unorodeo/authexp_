@@ -16,6 +16,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ThemeBtn } from "@/components/theme-btn";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { ClientSignOutForm } from "../forms/client-sign-out-form";
 
 type NavItem = {
 	href: string;
@@ -60,6 +61,7 @@ export const Header: React.FC<{}> = ({}) => {
 						<div className="flex flex-row items-center justify-between w-full h-14">
 							<Brand />
 							<div className="flex items-center gap-4 h-14">
+								<ClientSignOutForm />
 								<ThemeBtn />
 							</div>
 						</div>
