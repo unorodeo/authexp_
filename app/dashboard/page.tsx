@@ -1,7 +1,15 @@
 import { Section } from "@/components/ui/section";
 import { Statistics } from "@/components/dashboard/statistics";
+import { auth } from "@/authentication/auth";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+	const session = await auth();
+
+	if (!session) {
+		redirect("/sign-in");
+	}
+
 	return (
 		<>
 			<Section>

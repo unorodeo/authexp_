@@ -8,7 +8,6 @@ import {
 
 import Link from "next/link";
 import { SignUpForm } from "@/components/forms/sign-up-form";
-import { SocialAuthForm } from "@/components/forms/social-auth-form";
 import { cn } from "@/lib/cn";
 import { focusRing } from "@/lib/focuses";
 
@@ -33,7 +32,6 @@ export default function SignUp() {
 						Sign in
 					</Link>
 				</p>
-				<SocialAuthForm />
 			</CardContent>
 		</Card>
 	);
