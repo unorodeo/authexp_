@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "@/components/themes";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Providers: React.FC<{ children: React.ReactNode }> = ({
 	children,
@@ -11,6 +12,7 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({
 			disableTransitionOnChange
 		>
 			{children}
+			<Toaster />
 		</ThemeProvider>
 	);
 };
