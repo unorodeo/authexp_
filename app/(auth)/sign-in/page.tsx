@@ -27,7 +27,7 @@ export default async function SignIn() {
 				<CardTitle>Sign in to Account</CardTitle>
 				<CardDescription>Enter credentials to get access.</CardDescription>
 			</CardHeader>
-			<CardContent className="md:min-w-72">
+			<CardContent className="md:max-w-72">
 				<SignInForm />
 				<p className="mt-4 text-center small muted">
 					Do not have an account?{" "}

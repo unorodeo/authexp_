@@ -18,7 +18,7 @@ export default function SignUp() {
 				<CardTitle>Create an Account</CardTitle>
 				<CardDescription>Enter credentials to get started.</CardDescription>
 			</CardHeader>
-			<CardContent className="md:min-w-72">
+			<CardContent className="md:max-w-72">
 				<SignUpForm />
 				<p className="mt-4 text-center small muted">
 					Already have an account?{" "}
