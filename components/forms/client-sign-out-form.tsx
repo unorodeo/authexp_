@@ -5,7 +5,7 @@ import { LogOutIcon } from "lucide-react";
 import React from "react";
 import { signOut } from "next-auth/react";
 
-export const ClientSignOutForm: React.FC<{}> = ({}) => {
+export const ClientSignOutForm: React.FC = () => {
 	return (
 		<Button
 			type="button"

@@ -19,7 +19,7 @@ import {
 	type ForgotPasswordSchema,
 } from "@/validations/auth/validate-sign-in";
 
-export const ForgotPasswordForm: React.FC<{}> = ({}) => {
+export const ForgotPasswordForm: React.FC = () => {
 	const form = useForm<ForgotPasswordSchema>({
 		resolver: zodResolver(forgotPasswordSchema),
 		defaultValues: {

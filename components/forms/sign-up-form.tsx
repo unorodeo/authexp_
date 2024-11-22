@@ -20,7 +20,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 
-export const SignUpForm: React.FC<{}> = ({}) => {
+export const SignUpForm: React.FC = () => {
 	const form = useForm<SignUpSchema>({
 		resolver: zodResolver(signUpSchema),
 		defaultValues: {

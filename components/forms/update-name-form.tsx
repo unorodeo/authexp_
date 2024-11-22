@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React from "react";
 
-export const UpdateNameForm: React.FC<{}> = ({}) => {
+export const UpdateNameForm: React.FC = () => {
 	return (
 		<form className="grid max-w-3xl space-y-2">
 			<div className="grid items-center grid-cols-1 gap-2 md:grid-cols-2">

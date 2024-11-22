@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export const SignInForm: React.FC<{}> = ({}) => {
+export const SignInForm: React.FC = () => {
 	const form = useForm<SignInSchema>({
 		resolver: zodResolver(signInSchema),
 		defaultValues: {
