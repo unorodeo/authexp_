@@ -5,7 +5,6 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Brand } from "@/components/ui/brand";
 import Link from "next/link";
 import {
-	ComponentIcon,
 	LogInIcon,
 	type LucideIcon,
 	MenuIcon,
@@ -35,11 +34,6 @@ const NAVS: NavItem[] = [
 		label: "About",
 		icon: UtilityPoleIcon,
 	},
-	{
-		href: "/colophon",
-		label: "Colophon",
-		icon: ComponentIcon,
-	},
 ];
 
 export const Header: React.FC<{}> = ({}) => {
@@ -65,9 +59,7 @@ export const Header: React.FC<{}> = ({}) => {
 							<Link
 								key={item.href}
 								href={item.href}
-								className={cn(
-									buttonVariants({ variant: "ghost", size: "sm" })
-								)}
+								className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
 							>
 								<item.icon className="size-4 text-muted-foreground" />
 								{item.label}
