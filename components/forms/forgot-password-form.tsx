@@ -1,26 +1,66 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import React from "react";
 import { cn } from "@/lib/cn";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+	forgotPasswordSchema,
+	type ForgotPasswordSchema,
+} from "@/validations/auth/validate-sign-in";
 
-export const ForgotPasswordForm: React.FC<{}> = ({}) => {
+export const ForgotPasswordForm: React.FC = () => {
+	const form = useForm<ForgotPasswordSchema>({
+		resolver: zodResolver(forgotPasswordSchema),
+		defaultValues: {
+			email: "",
+		},
+	});
+
+	function onSubmit(values: ForgotPasswordSchema) {
+		// TODO: POST data to login server action
+		console.log(values);
+	}
+
 	return (
-		<form className="space-y-4">
-			<div className="grid gap-2">
-				<Label className="sr-only">Email address</Label>
-				<Input
-					type="email"
-					placeholder="Email address"
-					className={cn("text-base")}
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+				<FormField
+					control={form.control}
+					name="email"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel className="sr-only">Email address</FormLabel>
+							<FormControl>
+								<Input
+									type="email"
+									placeholder="Email address"
+									className={cn("text-base")}
+									autoComplete="email-address"
+									{...field}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
 				/>
-			</div>
-			<Button
-				type="submit"
-				className="w-full"
-			>
-				Get instructions &mdash; Email
-			</Button>
-		</form>
+				<Button
+					type="submit"
+					className="w-full"
+				>
+					Get instructions &mdash; Email
+				</Button>
+			</form>
+		</Form>
 	);
 };

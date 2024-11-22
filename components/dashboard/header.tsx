@@ -2,10 +2,8 @@
 
 import { Brand } from "@/components/ui/brand";
 import React from "react";
-import { useIsMobile } from "@/hooks/use-is-mobile";
 import {
 	CircleUserIcon,
-	CogIcon,
 	HomeIcon,
 	type LucideIcon,
 	ShieldIcon,
@@ -42,7 +40,7 @@ const NAVS: NavItem[] = [
 	},
 ];
 
-export const Header: React.FC<{}> = ({}) => {
+export const Header: React.FC = () => {
 	const match = useMediaQuery("(max-width: 768px)");
 	const pathname = usePathname();
 

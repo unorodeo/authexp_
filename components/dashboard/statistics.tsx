@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2Icon } from "lucide-react";
 import React from "react";
 
-export const Statistics: React.FC<{}> = ({}) => {
+export const Statistics: React.FC = () => {
 	return (
 		<Table className="border">
 			<TableCaption>Your account statistics.</TableCaption>

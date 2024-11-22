@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React from "react";
 
-export const UpdatePasswordForm: React.FC<{}> = ({}) => {
+export const UpdatePasswordForm: React.FC = () => {
 	return (
 		<form className="grid max-w-3xl space-y-4 md:space-y-2">
 			<div className="grid items-center grid-cols-1 gap-2 md:grid-cols-2">

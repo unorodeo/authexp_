@@ -38,7 +38,7 @@ const NAVS: NavItem[] = [
 	},
 ];
 
-export const Header: React.FC<{}> = ({}) => {
+export const Header: React.FC = () => {
 	const match = useIsMobile();
 	const { data: session } = useSession();
 	return (

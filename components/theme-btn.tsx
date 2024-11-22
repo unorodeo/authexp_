@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { useTheme } from "next-themes";
 
-export const ThemeBtn: React.FC<{}> = ({}) => {
+export const ThemeBtn: React.FC = () => {
 	const { setTheme, theme } = useTheme();
 	return (
 		<>
