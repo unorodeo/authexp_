@@ -1,7 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
+import { auth } from "@/authentication/auth";
+import { redirect } from "next/navigation";
 
-export default function Account() {
+export default async function Account() {
+	const session = await auth();
+
+	if (!session) {
+		redirect("/sign-in");
+	}
+
 	return (
 		<>
 			<Section>

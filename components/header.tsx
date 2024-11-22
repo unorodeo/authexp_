@@ -16,6 +16,8 @@ import { ThemeBtn } from "@/components/theme-btn";
 import { cn } from "@/lib/cn";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { Separator } from "@/components/ui/separator";
+import { useSession } from "next-auth/react";
+import { ClientSignOutForm } from "@/components/forms/client-sign-out-form";
 
 type NavItem = {
 	href: string;
@@ -38,7 +40,7 @@ const NAVS: NavItem[] = [
 
 export const Header: React.FC<{}> = ({}) => {
 	const match = useIsMobile();
-
+	const { data: session } = useSession();
 	return (
 		<header className="sticky inset-x-0 top-0 border-b bg-background">
 			<nav className="flex items-center justify-between px-4 mx-auto max-w-7xl h-14">
@@ -70,15 +72,19 @@ export const Header: React.FC<{}> = ({}) => {
 							orientation="vertical"
 							className="h-8"
 						/>
-						<Link
-							href={"/sign-in"}
-							className={cn(
-								buttonVariants({ variant: "secondary", size: "sm" })
-							)}
-						>
-							<LogInIcon className="size-4 text-muted-foreground" />
-							Sign in
-						</Link>
+						{session ? (
+							<ClientSignOutForm />
+						) : (
+							<Link
+								href={"/sign-in"}
+								className={cn(
+									buttonVariants({ variant: "secondary", size: "sm" })
+								)}
+							>
+								<LogInIcon className="size-4 text-muted-foreground" />
+								Sign in
+							</Link>
+						)}
 					</div>
 				)}
 			</nav>
