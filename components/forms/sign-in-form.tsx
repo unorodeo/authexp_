@@ -31,7 +31,6 @@ export const SignInForm: React.FC = () => {
 	});
 
 	function onSubmit(values: SignInSchema) {
-		// TODO: POST data to login server action
 		console.log(values);
 	}
 

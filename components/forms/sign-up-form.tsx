@@ -32,9 +32,8 @@ export const SignUpForm: React.FC = () => {
 	});
 
 	function onSubmit(values: SignUpSchema) {
-		// TODO: POST data to login server action
 		console.log(values);
-	};
+	}
 
 	return (
 		<Form {...form}>
