@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NOAUTH
 
-## Getting Started
+Experimentation with Auth.js, inspired by Code with Antonio's Next Auth V5 Course.
 
-First, run the development server:
+## Features
+
+### Core features
+
+- Sign in flow
+- Sign up flow
+- Social logins
+- Forgot password flow
+- Email verification flow
+- 2FA flow
+- Role based authentication
+- Role gate implementation
+- Update user details flow
+- Rate limiting
+- Session management
+
+### Complimentary features
+
+- current role/user utilities
+- middleware auth exploration
+- server actions
+- role/protected/public routing
+
+## Tech stack
+
+### Core stack
+
+- framework: Next.js 14.2.18
+- styling: Tailwindcss
+- components:
+  - Shadcn/ui
+  - others.
+- codebase: Typescript
+- database: Neondb
+- storage: Supabase
+- orm: Drizzleorm
+- frontend: React
+- package manager: Pnpm
+
+### Complimentary stack
+
+- ide: Vscode
+- os: Windows 11
+
+## Installation
+
+Clone the repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://unorodeo/noauth.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Switch to directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd noauth
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install dependencies
 
-## Learn More
+```bash
+pnpm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start dev server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Roadmap, kind of...
 
-## Deploy on Vercel
+- [x] Sign in flow
+- [ ] Sign up flow
+- [ ] Forgot password flow
+- [ ] Verify email flow
+- [ ] Onboarding flow
+- [ ] Role/protected routes/pages flow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Inquiries
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For any inquiries, contact me here &mdash; [work-email](mailto:humanwodreams@gmail.com?subject)
