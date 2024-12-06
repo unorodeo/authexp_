@@ -9,8 +9,8 @@ import { defineMetadata } from "@/utils/metadata";
 
 export const metadata: Metadata = defineMetadata({
   title: {
-    template: "%s | Noauth, auth?",
-    default: "Noauth, what is auth?",
+    template: "%s | Noauth",
+    default: "Noauth | A simple experimentation of Auth.js",
   },
   description: "A simple experimentation of Auth.js",
 });
