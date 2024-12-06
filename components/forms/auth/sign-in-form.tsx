@@ -19,6 +19,7 @@ import { cn } from "@/utils/cn";
 import { focusRing } from "@/utils/focuses";
 import { signInAction } from "@/actions/auth/sign-in-action";
 import { signInSchema } from "@/lib/schemas/auth";
+import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,9 +35,16 @@ export const SignInForm: React.FC = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  function onSubmit(values: z.infer<typeof signInSchema>) {
-    signInAction(values)
-    form.reset();
+  async function onSubmit(values: z.infer<typeof signInSchema>) {
+    const res = await signInAction(values);
+    if (res?.status === "error") {
+      toast.error(res.message);
+    }
+
+    if (res?.status === "success") {
+      toast.info(res.message);
+      form.reset();
+    }
   }
   return (
     <Form {...form}>
