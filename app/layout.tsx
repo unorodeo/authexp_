@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { geistMono, geistSans, inter } from "@/utils/fonts";
 
 import type { Metadata } from "next";
+import { Providers } from "@/components/providers/providers";
 import { cn } from "@/utils/cn";
 import { defineMetadata } from "@/utils/metadata";
 
@@ -26,13 +27,13 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          "dark antialiased",
+          "antialiased",
           geistSans.variable,
           geistMono.variable,
           inter.variable
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

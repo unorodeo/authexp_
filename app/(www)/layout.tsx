@@ -10,7 +10,7 @@ export default function W3Layout({ children }: Props) {
   return (
     <main className="flex flex-col justify-between min-h-screen">
       <Navigation />
-      <section className="relative flex flex-col flex-1">{children}</section>
+      <section className="relative flex-1">{children}</section>
       <Footer />
     </main>
   );

@@ -8,9 +8,9 @@ export const Section: React.FC<
   return (
     <section
       className={cn(
-        "max-w-5xl mx-auto px-4 lg:px-0 py-6 lg:py-12",
+        "max-w-7xl mx-auto px-4 py-6 lg:py-16",
         {
-          "max-w-full px-0 py-2 lg:py-4": bleed,
+          "max-w-full py-2 lg:py-4": bleed,
         },
         className
       )}
