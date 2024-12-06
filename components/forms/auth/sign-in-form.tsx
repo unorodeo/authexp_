@@ -17,6 +17,7 @@ import { PasswordInput } from "@/components/password-input";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { focusRing } from "@/utils/focuses";
+import { signInAction } from "@/actions/auth/sign-in-action";
 import { signInSchema } from "@/lib/schemas/auth";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -34,7 +35,7 @@ export const SignInForm: React.FC = () => {
   const isLoading = form.formState.isSubmitting;
 
   function onSubmit(values: z.infer<typeof signInSchema>) {
-    console.log(values);
+    signInAction(values)
     form.reset();
   }
   return (
