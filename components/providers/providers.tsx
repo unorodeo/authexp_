@@ -14,7 +14,7 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({
       disableTransitionOnChange
     >
       {children}
-      <Toaster />
+      <Toaster className="font-mono"/>
       <TailwindIndicator />
     </ThemeProvider>
   );
