@@ -1,14 +1,14 @@
 "use client";
 
-import { ComponentPropsWithoutRef, useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import React, { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 
-export default function PasswordInput({
-  placeholder,
-  ...props
-}: Omit<ComponentPropsWithoutRef<"input">, "type">) {
+export const PasswordInput = React.forwardRef<
+  HTMLInputElement,
+  Omit<React.ComponentProps<"input">, "type">
+>(({ placeholder, ...props }, ref) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const toggleVisibility = () => setIsVisible((prevState) => !prevState);
@@ -19,6 +19,7 @@ export default function PasswordInput({
         className="pe-9"
         placeholder={placeholder ?? "Password"}
         type={isVisible ? "text" : "password"}
+        ref={ref}
         {...props}
       />
       <button
@@ -45,4 +46,4 @@ export default function PasswordInput({
       </button>
     </div>
   );
-}
+});
