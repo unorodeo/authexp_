@@ -1,5 +1,7 @@
 import React from "react";
-import { ThemeProvider } from "./theme";
+import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
+import { ThemeProvider } from"@/components/providers/theme";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Providers: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -12,6 +14,8 @@ export const Providers: React.FC<{ children: React.ReactNode }> = ({
       disableTransitionOnChange
     >
       {children}
+      <Toaster />
+      <TailwindIndicator />
     </ThemeProvider>
   );
 };
