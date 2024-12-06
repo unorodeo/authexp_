@@ -6,6 +6,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 export default function PasswordInput({
+  placeholder,
   ...props
 }: Omit<ComponentPropsWithoutRef<"input">, "type">) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -16,7 +17,7 @@ export default function PasswordInput({
     <div className="relative">
       <Input
         className="pe-9"
-        placeholder="Password"
+        placeholder={placeholder ?? "Password"}
         type={isVisible ? "text" : "password"}
         {...props}
       />
@@ -31,14 +32,12 @@ export default function PasswordInput({
         {isVisible ? (
           <EyeOffIcon
             size={20}
-            strokeWidth={2}
             aria-hidden="true"
             className="text-foreground md:text-muted-foreground md:hover:text-foreground"
           />
         ) : (
           <EyeIcon
             size={20}
-            strokeWidth={2}
             aria-hidden="true"
             className="text-foreground md:text-muted-foreground md:hover:text-foreground"
           />
