@@ -1,6 +1,8 @@
 import { Card, CardHeader } from "@/components/ui/card";
 
 import { EmailClient } from "./_email";
+import { Suspense } from "react";
+import { cn } from "@/utils/cn";
 
 export default function Verify() {
   return (
@@ -10,9 +12,17 @@ export default function Verify() {
           <h1>Verify Email Address</h1>
           <p className="lead [&:not(:first-child)]:mt-0">
             We&apos;ve sent a verification token to your email at{" "}
-            <span className="text-primary">
-              <EmailClient />
-            </span>
+            <Suspense
+              fallback={
+                <span className={cn("animate-bounce muted small")}>
+                  fetching...
+                </span>
+              }
+            >
+              <span className="text-primary">
+                <EmailClient />
+              </span>
+            </Suspense>
           </p>
         </CardHeader>
       </Card>
