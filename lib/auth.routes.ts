@@ -3,6 +3,8 @@
  */
 export const publicRoutes = [
   "/",
+  "/terms",
+  "/privacy",
   "/about",
   "/contact",
   "/colophon",
