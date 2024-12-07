@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/section";
 import { auth } from "@/lib/auth";
 
 export default async function Studio() {
-  const session = await auth()
+  const session = await auth();
 
   return (
     <>
