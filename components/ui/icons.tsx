@@ -37,6 +37,7 @@ export const Icons = {
       height="1em"
       fill="none"
       viewBox="0 0 1200 1227"
+      className="dark:invert"
       {...props}
     >
       <path
