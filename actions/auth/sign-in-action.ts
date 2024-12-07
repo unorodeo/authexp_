@@ -1,5 +1,8 @@
 "use server";
 
+import { AuthError } from "next-auth";
+import { REDIRECT_SIGNIN } from "@/lib/auth.routes";
+import { signIn } from "@/lib/auth";
 import { signInSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
 
@@ -22,7 +25,35 @@ export const signInAction = async (
     };
   }
 
-  console.log(data);
+  try {
+    await signIn("credentials", {
+      redirectTo: REDIRECT_SIGNIN,
+      email: data.data.email,
+      password: data.data.password,
+    });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return {
+            status: "error",
+            message: "Invalid account credentials",
+          };
+        case "AccountNotLinked":
+          return {
+            status: "error",
+            message: "Account linkage not possible",
+          };
+        default:
+          return {
+            status: "error",
+            message: "Something went wrong",
+          };
+      }
+    }
+    throw error;
+  }
+
   return {
     status: "success",
     message: "Sign in successful, redirecting...",
