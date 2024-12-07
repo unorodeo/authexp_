@@ -14,7 +14,9 @@ export default async function Studio() {
         </p>
       </Section>
       <Section>
-        {JSON.stringify(session, null, 2)}
+        <code>
+          <pre>{JSON.stringify(session, null, 2)}</pre>
+        </code>
       </Section>
     </>
   );
