@@ -2,7 +2,7 @@
 
 import { genSaltSync, hashSync } from "bcryptjs";
 
-import { REDIRECT_SIGNUP } from "@/lib/auth.routes";
+import { REDIRECT_SIGNUP_FN } from "@/lib/auth.routes";
 import { getAccountByEmail } from "@/lib/definitions/prisma";
 import prisma from "@/lib/db";
 import { redirect } from "next/navigation";
@@ -54,7 +54,7 @@ export const signUpAction = async (
 
   // TODO: send verification token
 
-  redirect(REDIRECT_SIGNUP(email))
+  redirect(REDIRECT_SIGNUP_FN(email))
 
   return {
     status: "success",
