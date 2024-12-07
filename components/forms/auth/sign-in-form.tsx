@@ -103,7 +103,7 @@ export const SignInForm: React.FC = () => {
         >
           {isLoading ? (
             <>
-              <Loader2Icon className="animate-spin text-muted-foreground" />
+              <Loader2Icon className="animate-spin md:text-muted-foreground" />
               signing you in
             </>
           ) : (

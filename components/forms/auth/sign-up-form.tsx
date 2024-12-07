@@ -132,7 +132,7 @@ export const SignUpForm: React.FC = () => {
         >
           {isLoading ? (
             <>
-              <Loader2Icon className="animate-spin text-muted-foreground" />
+              <Loader2Icon className="animate-spin dark:text-muted-foreground" />
               creating your account
             </>
           ) : (
