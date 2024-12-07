@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRightIcon, Loader2Icon } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -12,7 +13,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { Loader2Icon } from "lucide-react";
 import { PasswordInput } from "@/components/password-input";
 import React from "react";
 import { cn } from "@/utils/cn";
@@ -39,7 +39,7 @@ export const SignUpForm: React.FC = () => {
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
     const res = await signUpAction(values);
-    
+
     if (res?.status === "error") {
       toast.error(res.message);
     }
@@ -129,14 +129,18 @@ export const SignUpForm: React.FC = () => {
         <Button
           type="submit"
           disabled={isLoading}
+          className="justify-between"
         >
           {isLoading ? (
             <>
-              <Loader2Icon className="animate-spin dark:text-muted-foreground" />
               creating your account
+              <Loader2Icon className="animate-spin" />
             </>
           ) : (
-            <>Create account</>
+            <>
+              Create account
+              <ArrowRightIcon />
+            </>
           )}
         </Button>
         <div className="flex justify-center">
