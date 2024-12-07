@@ -1,10 +1,13 @@
 import { Section } from "@/components/ui/section";
 import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function Studio() {
   const session = await auth();
 
-  if (!session?.user) return null;
+  if (!session?.user) {
+    redirect("/sign-in")
+  };
 
   return (
     <>
