@@ -3,9 +3,11 @@ import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/lib/schemas/auth";
 import { getAccountByEmail } from "./definitions/prisma";
 import { compareSync } from "bcryptjs";
+import Google from "next-auth/providers/google";
 
 const authConfig = {
   providers: [
+    Google,
     Credentials({
       credentials: {
         email: {},
