@@ -3,13 +3,14 @@ import "@/styles/globals.css";
 import { geistMono, geistSans, inter } from "@/utils/fonts";
 
 import type { Metadata } from "next";
+import { Providers } from "@/components/providers/providers";
 import { cn } from "@/utils/cn";
 import { defineMetadata } from "@/utils/metadata";
 
 export const metadata: Metadata = defineMetadata({
   title: {
-    template: "%s | Noauth, auth?",
-    default: "Noauth, what is auth?",
+    template: "%s | Noauth",
+    default: "Noauth | A simple experimentation of Auth.js",
   },
   description: "A simple experimentation of Auth.js",
 });
@@ -32,7 +33,7 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
