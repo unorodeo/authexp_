@@ -1,6 +1,9 @@
 import prisma from "@/lib/db";
 
-export const getAccountByEmail = async (email: string) => {
+export const getAccountByEmail = async (
+  email: string,
+  password: boolean = false
+) => {
   try {
     return await prisma.user.findUnique({
       where: {
@@ -14,6 +17,7 @@ export const getAccountByEmail = async (email: string) => {
         image: true,
         createdAt: true,
         updatedAt: true,
+        password: password,
       },
     });
   } catch {
