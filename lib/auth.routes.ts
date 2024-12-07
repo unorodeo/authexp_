@@ -2,9 +2,19 @@
  * collection of routes unauthenticated/unauthorized users can access
  */
 export const publicRoutes = [
-  "/",
+  // authentication
+  "/sign-in",
+  "/sign-up",
+  "/verify",
+  "/forgot-password",
+  "/reset-password",
+  
+  // law
   "/terms",
   "/privacy",
+
+  // marketing
+  "/",
   "/about",
   "/contact",
   "/colophon",
