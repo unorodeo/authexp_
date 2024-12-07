@@ -1,3 +1,4 @@
+import { Header } from "@/components/header";
 import { ReactNode } from "react";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 export default function StudioLayout({ children }: Props) {
   return (
     <main className="flex flex-col justify-between min-h-screen">
-      <header>studio header</header>
+      <Header />
       <section className="relative flex-1">{children}</section>
     </main>
   );
