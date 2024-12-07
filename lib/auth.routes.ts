@@ -1,5 +1,3 @@
-export const REDIRECT_SIGNUP = (email: string): `/verify?email=${string}` =>
-  `/verify?email=${email}`;
 
 /**
  * default sign-up redirect path
