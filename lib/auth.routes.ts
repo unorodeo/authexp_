@@ -1,3 +1,31 @@
+/**
+ * collection of routes unauthenticated/unauthorized users can access
+ */
+export const publicRoutes = [
+  "/",
+  "/about",
+  "/contact",
+  "/colophon",
+  "/docs",
+  "/docs/:path*",
+];
+
+/**
+ * collection of routes authenticated/authorized users can access
+ */
+export const protectedRoutes = ["/studio", "/studio/:path*"];
+
+/**
+ * api prefix for authentication using Next route handlers
+ */
+export const apiAuthPrefix = "/api/auth";
+
+/**
+ * default sign-in redirect path
+ *
+ * @default "/studio"
+ */
+export const REDIRECT_SIGNIN = "/studio";
 
 /**
  * default sign-up redirect path
