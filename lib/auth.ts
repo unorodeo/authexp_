@@ -16,15 +16,19 @@ declare module "next-auth" {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  callbacks: {
-    signIn: async ({ user }) => {
-      const exists = await getAccountById(user.id as string);
-
-      // the user signed in with a credentials provider
-      if(!exists || !exists.emailVerified) return false;
-      
-      return true;
+  events: {
+    linkAccount: async ({ account, profile, user }) => {
+      await prisma.user.update({
+        where: {
+          id: user.id,
+        },
+        data: {
+          emailVerified: new Date(),
+        },
+      });
     },
+  },
+  callbacks: {
     session: async ({ token, session }) => {
       if (session.user && token.sub) {
         session.user.id = token.sub;
