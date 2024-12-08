@@ -17,7 +17,7 @@ declare module "next-auth" {
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   events: {
-    linkAccount: async ({ account, profile, user }) => {
+    linkAccount: async ({ user }) => {
       await prisma.user.update({
         where: {
           id: user.id,
