@@ -49,6 +49,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return token;
     },
+    signIn: async ({ user }) => {
+      const verify = await getAccountById(user.id as string, true);
+
+      if (verify?.password && !verify.emailVerified) {
+        return false;
+      }
+      return true;
+    },
   },
   session: {
     strategy: "jwt",
