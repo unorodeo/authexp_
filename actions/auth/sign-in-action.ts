@@ -44,6 +44,11 @@ export const signInAction = async (
             status: "error",
             message: "Account linkage not possible",
           };
+        case "AccessDenied":
+          return {
+            status: "error",
+            message: "Account has not been verified",
+          };
         default:
           return {
             status: "error",
