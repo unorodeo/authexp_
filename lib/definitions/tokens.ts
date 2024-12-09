@@ -26,7 +26,7 @@ export const generateVerificationToken = async (email: string) => {
 
     return token;
   } catch {
-    null;
+    return null;
   }
 };
 
