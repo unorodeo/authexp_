@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/lib/schemas/auth";
-import { getAccountByEmail } from "./definitions/prisma";
+import { getAccountByEmail } from "./definitions/account";
 import { compareSync } from "bcryptjs";
 import Google from "next-auth/providers/google";
 

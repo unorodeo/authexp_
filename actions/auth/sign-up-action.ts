@@ -3,7 +3,7 @@
 import { genSaltSync, hashSync } from "bcryptjs";
 
 import { REDIRECT_SIGNUP_FN } from "@/lib/auth.routes";
-import { getAccountByEmail } from "@/lib/definitions/prisma";
+import { getAccountByEmail } from "@/lib/definitions/account";
 import prisma from "@/lib/db";
 import { redirect } from "next/navigation";
 import { signUpSchema } from "@/lib/schemas/auth";
