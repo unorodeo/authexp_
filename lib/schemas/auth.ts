@@ -43,3 +43,10 @@ export const updatePasswordSchema = object({
   path: ["confirm"],
   message: "Passwords do not match",
 });
+
+export const verificationTokenSchema = object({
+  token: z
+    .string()
+    .min(6, "Your one-time password must be 6 characters.")
+    .regex(/^\d*$/, "Only digits are allowed")
+});
