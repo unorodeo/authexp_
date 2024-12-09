@@ -55,7 +55,7 @@ export const signInAction = async (
 
       return {
         status: "success",
-        message: `Verification has been sent to ${existing.email}`,
+        message: `Verification has been sent to ${verification.email}`,
       };
     }
 
