@@ -1,11 +1,12 @@
 "use server";
 
 import { genSaltSync, hashSync } from "bcryptjs";
+import { permanentRedirect, redirect } from "next/navigation";
 
-import { REDIRECT_SIGNUP_FN } from "@/lib/auth.routes";
+import { generateVerificationOTP } from "@/lib/definitions/tokens";
 import { getAccountByEmail } from "@/lib/definitions/account";
 import prisma from "@/lib/db";
-import { redirect } from "next/navigation";
+import { sendVerificationEmail } from "@/lib/mail";
 import { signUpSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
 
@@ -52,9 +53,17 @@ export const signUpAction = async (
     },
   });
 
-  // TODO: send verification token
+  const token = await generateVerificationOTP(email);
 
-  redirect(REDIRECT_SIGNUP_FN(email))
+  if (token?.email && token.token) {
+    await sendVerificationEmail(token.email, token.token);
+    permanentRedirect("/verify");
+  } else {
+    return {
+      status: "error",
+      message: "Failed to create token",
+    };
+  }
 
   return {
     status: "success",
