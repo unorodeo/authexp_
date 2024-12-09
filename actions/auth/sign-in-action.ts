@@ -1,11 +1,15 @@
 "use server";
 
-import { generateVerificationOTP, getVerificationByEmail } from "@/lib/definitions/tokens";
+import {
+  generateVerificationOTP,
+  getVerificationByEmail,
+} from "@/lib/definitions/tokens";
 
 import { AuthError } from "next-auth";
 import { REDIRECT_SIGNIN } from "@/lib/auth.routes";
 import { getAccountByEmail } from "@/lib/definitions/account";
 import prisma from "@/lib/db";
+import { sendVerificationEmail } from "@/lib/mail";
 import { signIn } from "@/lib/auth";
 import { signInSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
@@ -29,23 +33,27 @@ export const signInAction = async (
     };
   }
 
-  const existing = await getAccountByEmail(data.data.email, true)
+  const existing = await getAccountByEmail(data.data.email, true);
 
-  if(existing?.password && !existing.emailVerified) {
-    const expired = await getVerificationByEmail(existing.email)
+  if (existing?.password && !existing.emailVerified) {
+    const expired = await getVerificationByEmail(existing.email);
     if (new Date().getSeconds() < (expired?.expires.getSeconds() as number)) {
-      await generateVerificationOTP(existing.email)
+      const token = await generateVerificationOTP(existing.email);
+      await sendVerificationEmail(
+        token?.email as string,
+        token?.token as string
+      );
 
       return {
         status: "success",
-        message: `Verification has been sent to ${existing.email}`
-      }
+        message: `Verification has been sent to ${existing.email}`,
+      };
     }
 
     return {
       status: "success",
-      message: "Verification has not expired, verify your account"
-    }
+      message: "Verification has not expired, verify your account",
+    };
   }
 
   try {
