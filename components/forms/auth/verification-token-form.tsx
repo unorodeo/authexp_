@@ -23,6 +23,7 @@ import React from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { verificationTokenSchema } from "@/lib/schemas/auth";
+import { verifyTokenAction } from "@/actions/auth/verify-token-action";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -34,12 +35,16 @@ export const VerificationTokenForm: React.FC = () => {
     },
   });
   const isLoading = form.formState.isSubmitting;
-  function onSubmit(data: z.infer<typeof verificationTokenSchema>) {
-    toast.info(
-      <pre className="w-[340px] rounded-md p-4">
-        <code>{JSON.stringify(data, null, 2)}</code>
-      </pre>
-    );
+  async function onSubmit(data: z.infer<typeof verificationTokenSchema>) {
+    const res = await verifyTokenAction(data);
+
+    if (res?.status === "error") {
+      toast.error(res.message);
+    }
+    if (res?.status === "success") {
+      toast.success(res.message);
+      form.reset();
+    }
   }
   return (
     <Form {...form}>
@@ -60,16 +65,16 @@ export const VerificationTokenForm: React.FC = () => {
                   {...field}
                 >
                   <InputOTPGroup className="[&>div]:size-12">
-        <InputOTPSlot index={0} />
-        <InputOTPSlot index={1} />
-        <InputOTPSlot index={2} />
-      </InputOTPGroup>
-      <InputOTPSeparator />
-      <InputOTPGroup className="[&>div]:size-12">
-        <InputOTPSlot index={3} />
-        <InputOTPSlot index={4} />
-        <InputOTPSlot index={5} />
-      </InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                  </InputOTPGroup>
+                  <InputOTPSeparator />
+                  <InputOTPGroup className="[&>div]:size-12">
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
                 </InputOTP>
               </FormControl>
               <FormDescription>
@@ -84,17 +89,16 @@ export const VerificationTokenForm: React.FC = () => {
           className="justify-between"
           disabled={isLoading}
         >
-          {isLoading ? (
+          {isLoading ?
             <>
               Verifying account
               <Loader2Icon className="animate-spin" />
             </>
-          ) : (
-            <>
+          : <>
               Verify account
               <ArrowRightIcon />
             </>
-          )}
+          }
         </Button>
       </form>
     </Form>
