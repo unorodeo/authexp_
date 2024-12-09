@@ -6,7 +6,7 @@ import { permanentRedirect, redirect } from "next/navigation";
 import { generateVerificationOTP } from "@/lib/definitions/tokens";
 import { getAccountByEmail } from "@/lib/definitions/account";
 import prisma from "@/lib/db";
-import { sendVerificationEmail } from "@/lib/mail";
+import { sendVerificationEmail } from "@/lib/emails";
 import { signUpSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
 
