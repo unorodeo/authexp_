@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRightIcon, Loader2Icon } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -12,7 +13,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { Loader2Icon } from "lucide-react";
 import { PasswordInput } from "@/components/password-input";
 import React from "react";
 import { cn } from "@/utils/cn";
@@ -99,15 +99,19 @@ export const SignInForm: React.FC = () => {
         />
         <Button
           type="submit"
+          className="justify-between"
           disabled={isLoading}
         >
           {isLoading ? (
             <>
-              <Loader2Icon className="animate-spin md:text-muted-foreground" />
               signing you in
+              <Loader2Icon className="animate-spin" />
             </>
           ) : (
-            <>Sign in</>
+            <>
+              Sign in
+              <ArrowRightIcon />
+            </>
           )}
         </Button>
         <div className="flex justify-center">

@@ -18,6 +18,7 @@ export const getAccountByEmail = async (
         createdAt: true,
         updatedAt: true,
         password: password,
+        role: true,
       },
     });
   } catch {
@@ -25,7 +26,7 @@ export const getAccountByEmail = async (
   }
 };
 
-export const getAccountById = async (id: string) => {
+export const getAccountById = async (id: string, password: boolean = false) => {
   try {
     return await prisma.user.findUnique({
       where: {
@@ -39,6 +40,8 @@ export const getAccountById = async (id: string) => {
         image: true,
         createdAt: true,
         updatedAt: true,
+        password: password,
+        role: true,
       },
     });
   } catch {

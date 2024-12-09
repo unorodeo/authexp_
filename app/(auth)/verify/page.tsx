@@ -1,30 +1,26 @@
-import { Card, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-import { EmailClient } from "./_email";
-import { Suspense } from "react";
-import { cn } from "@/utils/cn";
+import { VerificationTokenForm } from "@/components/forms/auth/verification-token-form";
 
 export default function Verify() {
   return (
     <section className="flex flex-col items-center justify-center h-full">
       <Card className="border-none shadow-none">
-        <CardHeader className="md:items-center">
-          <h1>Verify Email Address</h1>
-          <p className="lead [&:not(:first-child)]:mt-0">
-            We&apos;ve sent a verification token to your email at{" "}
-            <Suspense
-              fallback={
-                <span className={cn("animate-bounce muted small")}>
-                  fetching...
-                </span>
-              }
-            >
-              <span className="text-primary">
-                <EmailClient />
-              </span>
-            </Suspense>
-          </p>
+        <CardHeader>
+          <CardTitle>Account verification</CardTitle>
+          <CardDescription>
+            Enter one-time password code to gain access
+          </CardDescription>
         </CardHeader>
+        <CardContent>
+          <VerificationTokenForm />
+        </CardContent>
       </Card>
     </section>
   );

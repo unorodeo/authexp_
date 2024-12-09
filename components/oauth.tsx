@@ -14,8 +14,8 @@ export const OAuth: React.FC = () => {
         className="justify-between"
         onClick={() => signIn("google")}
       >
-        <Icons.GoogleIcon />
         Google
+        <Icons.GoogleIcon />
       </Button>
     </div>
   );

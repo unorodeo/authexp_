@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { geistMono, geistSans, inter } from "@/utils/fonts";
+import { geistMono, geistSans } from "@/utils/fonts";
 
 import type { Metadata } from "next";
 import { Providers } from "@/components/providers/providers";
@@ -30,7 +30,6 @@ export default function RootLayout({
           "antialiased",
           geistSans.variable,
           geistMono.variable,
-          inter.variable
         )}
       >
         <Providers>{children}</Providers>
