@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendVerificationEmail = async (email: string, token: string) => {
   try {
     await resend.emails.send({
-      from: "no-reply@norauth.com",
+      from: "Norauth <onboarding@resend.dev>",
       to: email,
       subject: "Account Verification Procedure",
       react: Verification({ email, token }),
