@@ -35,9 +35,19 @@ export const signInAction = async (
   const existing = await getAccountByEmail(data.data.email, true);
 
   if (existing?.password && !existing.emailVerified) {
-    const expired = await getVerificationByEmail(existing.email);
-    if (new Date().getSeconds() < (expired?.expires.getSeconds() as number)) {
-      const token = await generateVerificationOTP(existing.email);
+    const verification = await getVerificationByEmail(existing.email);
+
+    if (!verification) {
+      return {
+        status: "error",
+        message: "Account does not have a verification",
+      };
+    }
+
+    const expired = new Date(verification.expires) < new Date();
+
+    if (expired) {
+      const token = await generateVerificationOTP(verification.email);
       await sendVerificationEmail(
         token?.email as string,
         token?.token as string
