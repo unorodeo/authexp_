@@ -8,8 +8,7 @@ import {
 import { AuthError } from "next-auth";
 import { REDIRECT_SIGNIN } from "@/lib/auth.routes";
 import { getAccountByEmail } from "@/lib/definitions/account";
-import prisma from "@/lib/db";
-import { sendVerificationEmail } from "@/lib/mail";
+import { sendVerificationEmail } from "@/lib/emails";
 import { signIn } from "@/lib/auth";
 import { signInSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
