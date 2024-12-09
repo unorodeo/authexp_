@@ -18,7 +18,7 @@ export const getAccountByEmail = async (
         createdAt: true,
         updatedAt: true,
         password: password,
-        role: true
+        role: true,
       },
     });
   } catch {
@@ -41,7 +41,7 @@ export const getAccountById = async (id: string, password: boolean = false) => {
         createdAt: true,
         updatedAt: true,
         password: password,
-        role: true
+        role: true,
       },
     });
   } catch {
